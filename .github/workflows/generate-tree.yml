@@ -3,29 +3,76 @@ name: Generate Directory Tree
 on:
   push:
     paths:
-      - '**'          # 任何文件变动都触发
-      - '!README.md'  # 忽略 README 本身的变动，防止死循环
+      - '**'          # 感知所有文件变化
+      - '!README.md'  # 忽略 README 自身变化防止死循环
+      - '!.github/**' # 忽略工作流配置变化
     branches:
-      - main          # 或者 master
+      - main          # 或者是 master，看前辈的主分支叫啥
+
+# ⚠️ 重点：必须赋予写权限，否则无法推送更新回仓库！
+permissions:
+  contents: write
 
 jobs:
-  build:
+  update-tree:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Generate Tree
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Install Tree & Generate
         run: |
-          # 安装 tree
           sudo apt-get install -y tree
-          # 生成目录结构 (排除 .git 等杂项)
-          tree -a -I '.git|__pycache__|.github|*.egg-info' --dirsfirst > tree.txt
+          # 生成树形结构存入临时文件，排除杂项
+          tree -a -I '.git|__pycache__|.github|*.egg-info|*.idea|__init__.py' --dirsfirst > tree.txt
+
+      - name: Update README with Python
+        # 我们直接用 Python 来处理文本替换，比 sed 更稳！
+        shell: python
+        run: |
+          import os
           
-      - name: Update README
-        uses: x-access-token/readmes-updater@v1
+          # 读取刚才生成的树
+          with open("tree.txt", "r", encoding="utf-8") as f:
+              tree_content = f.read()
+          
+          # 读取 README
+          readme_path = "README.md"
+          if os.path.exists(readme_path):
+              with open(readme_path, "r", encoding="utf-8") as f:
+                  lines = f.readlines()
+              
+              start_marker = "<!-- START_SECTION:tree -->"
+              end_marker = "<!-- END_SECTION:tree -->"
+              
+              new_lines = []
+              in_block = False
+              found_block = False
+              
+              for line in lines:
+                  if start_marker in line:
+                      in_block = True
+                      found_block = True
+                      new_lines.append(line)
+                      new_lines.append("```text\n")
+                      new_lines.append(tree_content)
+                      new_lines.append("```\n")
+                  elif end_marker in line:
+                      in_block = False
+                      new_lines.append(line)
+                  elif not in_block:
+                      new_lines.append(line)
+              
+              if found_block:
+                  with open(readme_path, "w", encoding="utf-8") as f:
+                      f.writelines(new_lines)
+                  print("✅ README updated successfully.")
+              else:
+                  print("⚠️ Markers not found in README. Please add <!-- START_SECTION:tree --> and <!-- END_SECTION:tree -->")
+
+      - name: Commit and Push Changes
+        # 使用最权威的 stefanzweifel/git-auto-commit-action
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          file: 'README.md'
-          content-file: 'tree.txt'
-          start-tag: '<!-- START_SECTION:tree -->'
-          end-tag: '<!-- END_SECTION:tree -->'
+          commit_message: "docs: auto-update directory tree [skip ci]"
+          file_pattern: README.md
