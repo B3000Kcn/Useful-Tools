@@ -1,0 +1,31 @@
+name: Generate Directory Tree
+
+on:
+  push:
+    paths:
+      - '**'          # 任何文件变动都触发
+      - '!README.md'  # 忽略 README 本身的变动，防止死循环
+    branches:
+      - main          # 或者 master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate Tree
+        run: |
+          # 安装 tree
+          sudo apt-get install -y tree
+          # 生成目录结构 (排除 .git 等杂项)
+          tree -a -I '.git|__pycache__|.github|*.egg-info' --dirsfirst > tree.txt
+          
+      - name: Update README
+        uses: x-access-token/readmes-updater@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          file: 'README.md'
+          content-file: 'tree.txt'
+          start-tag: '<!-- START_SECTION:tree -->'
+          end-tag: '<!-- END_SECTION:tree -->'
