@@ -17,7 +17,7 @@ Description:
     - Metadata injection (Gene, Product, %Identity, %Coverage).
     - Change the type in line 123 to alter the type of annotation (e.g., Gene, tRNA, etc.)
 
-    How to use: `abricate2gbk.py input.fasta abricate.tsv output.gbk`
+    How to use: abricate2gbk.py input.fasta abricate.tsv output.gbk
 
 Dependencies:
     - biopython>=1.81
