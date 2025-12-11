@@ -1,13 +1,13 @@
 name: Generate Directory Tree
 
 on:
+  # 1. 允许手动点击按钮触发（调试神技！）
+  workflow_dispatch:
+  
+  # 2. 推送触发（暂时去掉所有 paths 过滤，确保能跑通）
   push:
-    paths:
-      - '**'          # 感知所有文件变化
-      - '!README.md'  # 忽略 README 自身变化防止死循环
-      - '!.github/**' # 忽略工作流配置变化
     branches:
-      - main          # 或者是 master，看前辈的主分支叫啥
+      - main    # ⚠️ 请确认你的主分支是叫 main 还是 master？如果不确定，写 - '*' 通吃
 
 # ⚠️ 重点：必须赋予写权限，否则无法推送更新回仓库！
 permissions:
