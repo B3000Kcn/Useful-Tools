@@ -6,12 +6,14 @@ Share some useful scripts and tools for personal use.
 ```text
 .
 ├── bio_info
+│   ├── abricate
+│   │   └── 1
 │   ├── abricate2gbk.py
 │   └── abricate2gff.py
 ├── LICENSE
 ├── README.md
 └── tree.txt
 
-2 directories, 5 files
+3 directories, 6 files
 ```
 <!-- END_SECTION:tree -->
