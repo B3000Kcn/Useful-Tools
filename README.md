@@ -7,13 +7,12 @@ Share some useful scripts and tools for personal use.
 .
 ├── bio_info
 │   └── abricate
-│       ├── 1
 │       ├── abricate2gbk.py
 │       └── abricate2gff.py
 ├── LICENSE
 ├── README.md
 └── tree.txt
 
-3 directories, 6 files
+3 directories, 5 files
 ```
 <!-- END_SECTION:tree -->
