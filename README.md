@@ -6,6 +6,8 @@ Share some useful scripts and tools for personal use.
 ```text
 .
 ├── bio_info
+│   ├── Matrix-Sieve_Assembly_test
+│   │   └── matrix.sh
 │   └── abricate
 │       ├── abricate2gbk.py
 │       └── abricate2gff.py
@@ -13,6 +15,6 @@ Share some useful scripts and tools for personal use.
 ├── README.md
 └── tree.txt
 
-3 directories, 5 files
+4 directories, 6 files
 ```
 <!-- END_SECTION:tree -->
