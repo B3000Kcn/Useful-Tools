@@ -7,6 +7,7 @@ Share some useful scripts and tools for personal use.
 .
 ├── bio_info
 │   ├── Matrix-Sieve_Assembly_test
+│   │   ├── autocycler.sh
 │   │   └── matrix.sh
 │   └── abricate
 │       ├── abricate2gbk.py
@@ -15,6 +16,6 @@ Share some useful scripts and tools for personal use.
 ├── README.md
 └── tree.txt
 
-4 directories, 6 files
+4 directories, 7 files
 ```
 <!-- END_SECTION:tree -->
