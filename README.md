@@ -15,10 +15,9 @@ Share some useful scripts and tools for personal use.
 │   │   ├── abricate2gbk.py
 │   │   └── abricate2gff.py
 │   ├── blast_db_tools
-│   │   ├── parallel_extract
-│   │   │   ├── blast_db_parallel_extract_fasta.sh
-│   │   │   └── blast_db_parallel_extract_ids.sh
-│   │   └── extract_fasta.sh
+│   │   └── parallel_extract
+│   │       ├── blast_db_parallel_extract_fasta.sh
+│   │       └── blast_db_parallel_extract_ids.sh
 │   ├── brick
 │   │   └── smart_layout_brick_labels.py
 │   └── 丝滑小连招
@@ -28,6 +27,6 @@ Share some useful scripts and tools for personal use.
 ├── README.md
 └── tree.txt
 
-9 directories, 14 files
+9 directories, 13 files
 ```
 <!-- END_SECTION:tree -->
