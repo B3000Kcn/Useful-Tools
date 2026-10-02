@@ -16,6 +16,7 @@ Share some useful scripts and tools for personal use.
 │   │   └── abricate2gff.py
 │   ├── blast_db_tools
 │   │   └── parallel_extract
+│   │       ├── README.md
 │   │       ├── blast_db_parallel_extract_fasta.sh
 │   │       └── blast_db_parallel_extract_ids.sh
 │   ├── brick
@@ -27,6 +28,6 @@ Share some useful scripts and tools for personal use.
 ├── README.md
 └── tree.txt
 
-9 directories, 13 files
+9 directories, 14 files
 ```
 <!-- END_SECTION:tree -->
