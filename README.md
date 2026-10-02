@@ -14,6 +14,8 @@ Share some useful scripts and tools for personal use.
 │   ├── abricate
 │   │   ├── abricate2gbk.py
 │   │   └── abricate2gff.py
+│   ├── blast_db_tools
+│   │   └── extract_fasta.sh
 │   ├── brick
 │   │   └── smart_layout_brick_labels.py
 │   └── 丝滑小连招
@@ -23,6 +25,6 @@ Share some useful scripts and tools for personal use.
 ├── README.md
 └── tree.txt
 
-7 directories, 11 files
+8 directories, 12 files
 ```
 <!-- END_SECTION:tree -->
