@@ -5,6 +5,10 @@ Share some useful scripts and tools for personal use.
 <!-- START_SECTION:tree -->
 ```text
 .
+├── Agents
+│   └── Skills
+│       └── concurrent-and-long-running-task-cost-and-risk-control
+│           └── SKILL.md
 ├── Environments
 │   └── Windows环境SSH多跳配置.md
 ├── bio_info
@@ -28,6 +32,6 @@ Share some useful scripts and tools for personal use.
 ├── README.md
 └── tree.txt
 
-9 directories, 14 files
+12 directories, 15 files
 ```
 <!-- END_SECTION:tree -->
